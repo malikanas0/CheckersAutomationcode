@@ -1,5 +1,6 @@
 import { loginPageSelectors } from "../../utlis/locator"
-
+import { cartform } from "../../utlis/locator"
+beforeEach(()=>{cy.visit('https://www.demoblaze.com/')})
 describe('Seperate selectors using pom' , function(){
     it('login page selectors' , function() {
 
@@ -10,12 +11,10 @@ describe('Seperate selectors using pom' , function(){
         cy.get(loginPageSelectors.passwordInput).type('Password@123')
         cy.wait(4000)
         cy.get(loginPageSelectors.loginButton).eq(2).click()
-        /*cy.get('#login2').click()
-        cy.wait(3000)
-        cy.get('#loginusername').click().type('Alitest@gmail.com')
-        cy.get('#loginpassword').click().type('Password@123')
-        cy.wait(4000)
-        //cy.get('input[type="button"]').click()
-        cy.get('[class="btn btn-primary"]').eq(2).click();*/
+    })
+    it('cart selectors',()=>{
+        cy.get(cartform.togetcartform).click()
+        cy.get(cartform.placeorder).click()
+        
     })
 })
