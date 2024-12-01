@@ -1,7 +1,7 @@
 describe('My fourth automated test suit',function(){
     it('fouth one automate test case',function(){
-        cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
-        // Check box concepts
+        cy.visit('https://demoqa.com/')
+       /* // Check box concepts
         cy.get('#checkBoxOption1').check().should('be.checked').and('have.value','option1')
         cy.wait(4000)
         cy.get('#checkBoxOption1').uncheck().should('not.be.checked')
@@ -24,6 +24,6 @@ describe('My fourth automated test suit',function(){
         cy.get('#show-textbox').click()
         cy.get('#displayed-text').should('be.visible')
         //radio buttons concepts
-        cy.get('[value="radio2"]').check().should('be.checked')
+        cy.get('[value="radio2"]').check().should('be.checked')*/
     })
 })

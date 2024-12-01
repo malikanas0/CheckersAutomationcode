@@ -1,8 +1,8 @@
 import { demoqaverifyaddnewuser } from "../../utlis/demoqalocator"
 import { verifyeditfunctionality } from "../../utlis/demoqalocator";
-Cypress.on('uncaught:exception', (err, runnable) => {
-    return false
-    });
+import { verifybrokenimage } from "../../utlis/demoqalocator";
+import { verifythesubmitform } from "../../utlis/demoqalocator";
+
     beforeEach(()=>{cy.visit('https://demoqa.com/')})
 describe('demoqa site automation',()=>{
     it('verify user can enter new data into the table',()=>{
@@ -32,4 +32,31 @@ describe('demoqa site automation',()=>{
         cy.get(verifyeditfunctionality.clearlastname).should('have.value', 'Cantrell').clear().type('BV').and('have.value', 'BV')
         cy.get(verifyeditfunctionality.clickonsubmitbtn).click().should('have.text','Submit')
     })
-})
+    it('Verify Broken images',()=>{
+        cy.get(verifybrokenimage.navigatetoelement).eq(0).click()
+        cy.get(verifybrokenimage.clickonbrokenimages).click().should('have.id','item-6')
+        cy.get(verifybrokenimage.clickonimage).should('have.attr','src','/images/Toolsqa_1.jpg')
+    })
+    it.only('Verify user submit the form',()=>{
+        cy.get(verifythesubmitform.naviagtetoform).eq(1).click()
+        cy.get(verifythesubmitform.clickonpracticefrom).click()
+        cy.get(verifythesubmitform.userfirstname).type('Gerimedica')
+        cy.get(verifythesubmitform.userlastname).type('BV')
+        cy.get(verifythesubmitform.userEmail).type('test@test.com')
+        cy.get(verifythesubmitform.selectgender).eq(0).click()
+        cy.get(verifythesubmitform.usernumber).type('0123456789')
+        cy.get(verifythesubmitform.userdateofbirth).click()
+        cy.get(verifythesubmitform.clickonmonth).select('January')
+        cy.get(verifythesubmitform.selectyear).select('1990')
+        cy.get(verifythesubmitform.selectdate).click()
+        cy.get(verifythesubmitform.usersubject).type('Playwright Assignment')
+        cy.get(verifythesubmitform.usercheckbox).click()
+        cy.get(verifythesubmitform.uploadpicture).selectFile('/Users/HP/Downloads/image.png')
+        cy.get(verifythesubmitform.usercurrentaddress).type('Netherland')
+        cy.get(verifythesubmitform.selectuserstate).eq(0).click()
+        cy.contains('NCR').eq(0).click()
+        /*cy.get(verifythesubmitform.selectusercity).eq(1).click()
+        cy.contains('Dehli').eq(0).click()
+        cy.get(verifythesubmitform.clickonsubmitbtn).click()*/
+    })
+    })
