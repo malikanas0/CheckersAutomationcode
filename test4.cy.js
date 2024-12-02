@@ -1,7 +1,7 @@
 describe('My fourth automated test suit',function(){
     it('fouth one automate test case',function(){
         cy.visit('https://demoqa.com/')
-       /* // Check box concepts
+       / // Check box concepts
         cy.get('#checkBoxOption1').check().should('be.checked').and('have.value','option1')
         cy.wait(4000)
         cy.get('#checkBoxOption1').uncheck().should('not.be.checked')

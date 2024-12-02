@@ -2,12 +2,12 @@ import { demoqaverifyaddnewuser } from "../../utlis/demoqalocator"
 import { verifyeditfunctionality } from "../../utlis/demoqalocator";
 import { verifybrokenimage } from "../../utlis/demoqalocator";
 import { verifythesubmitform } from "../../utlis/demoqalocator";
-
+import { alltask } from "../../utlis/demoqafunctions";
     beforeEach(()=>{cy.visit('https://demoqa.com/')})
 describe('demoqa site automation',()=>{
     it('verify user can enter new data into the table',()=>{
-        //cy.visit('https://demoqa.com/')
-        cy.url().should('include','com')
+        alltask.Taskno1()
+        /*cy.url().should('include','com')
         cy.get(demoqaverifyaddnewuser.navigatetoelement).eq(0).click()
         cy.get(demoqaverifyaddnewuser.clickonwebtales).click().should('have.id','item-3')
         cy.get(demoqaverifyaddnewuser.clickonaddbutton).click().should('have.text','Add')
@@ -20,9 +20,9 @@ describe('demoqa site automation',()=>{
         cy.wait(3000)
         cy.get(demoqaverifyaddnewuser.addusersalary).type('12345').should('have.value', '12345')
         cy.get(demoqaverifyaddnewuser.adduserdepartment).type('QA').should('have.value', 'QA')
-        cy.get(demoqaverifyaddnewuser.clickonsubmitbtn).click().should('have.text','Submit')
+        cy.get(demoqaverifyaddnewuser.clickonsubmitbtn).click().should('have.text','Submit')*/
     })
-    it('verify user can edit row in a table',()=>{
+   it('verify user can edit row in a table',()=>{
         cy.get(verifyeditfunctionality.navigatetoelement).eq(0).click()
         cy.get(verifyeditfunctionality.clickonwebtales).click().should('have.id','item-3')
         cy.wait(3000)
@@ -49,7 +49,8 @@ describe('demoqa site automation',()=>{
         cy.get(verifythesubmitform.clickonmonth).select('January')
         cy.get(verifythesubmitform.selectyear).select('1990')
         cy.get(verifythesubmitform.selectdate).click()
-        cy.get(verifythesubmitform.usersubject).type('Maths').click()
+        cy.get(verifythesubmitform.usersubject).type('Maths')
+        cy.get('[id="react-select-2-option-0"]').click()
         cy.get(verifythesubmitform.usercheckbox).click()
         cy.get(verifythesubmitform.uploadpicture).selectFile('/Users/HP/Downloads/image.png')
         cy.get(verifythesubmitform.usercurrentaddress).type('Netherland')
