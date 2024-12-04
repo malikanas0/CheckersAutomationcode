@@ -1,13 +1,11 @@
-import { demoqaverifyaddnewuser } from "../../utlis/demoqalocator"
+import { demoqaverifyaddnewuser, verifydraganddrop, verifyprogressbar, verifytooltip } from "../../utlis/demoqalocator"
 import { verifyeditfunctionality } from "../../utlis/demoqalocator";
 import { verifybrokenimage } from "../../utlis/demoqalocator";
 import { verifythesubmitform } from "../../utlis/demoqalocator";
-import { alltask } from "../../utlis/demoqafunctions";
     beforeEach(()=>{cy.visit('https://demoqa.com/')})
-describe('demoqa site automation',()=>{
+  describe('demoqa site automation',()=>{
     it('verify user can enter new data into the table',()=>{
-        alltask.Taskno1()
-        /*cy.url().should('include','com')
+        cy.url().should('include','com')
         cy.get(demoqaverifyaddnewuser.navigatetoelement).eq(0).click()
         cy.get(demoqaverifyaddnewuser.clickonwebtales).click().should('have.id','item-3')
         cy.get(demoqaverifyaddnewuser.clickonaddbutton).click().should('have.text','Add')
@@ -20,7 +18,7 @@ describe('demoqa site automation',()=>{
         cy.wait(3000)
         cy.get(demoqaverifyaddnewuser.addusersalary).type('12345').should('have.value', '12345')
         cy.get(demoqaverifyaddnewuser.adduserdepartment).type('QA').should('have.value', 'QA')
-        cy.get(demoqaverifyaddnewuser.clickonsubmitbtn).click().should('have.text','Submit')*/
+        cy.get(demoqaverifyaddnewuser.clickonsubmitbtn).click().should('have.text','Submit')
     })
    it('verify user can edit row in a table',()=>{
         cy.get(verifyeditfunctionality.navigatetoelement).eq(0).click()
@@ -61,4 +59,19 @@ describe('demoqa site automation',()=>{
         cy.get(verifythesubmitform.clickonsubmitbtn).click()
         cy.get(verifythesubmitform.verifytheform).should('have.text','Thanks for submitting the form')
     })
+    it('verify the progress bar',()=>{
+        cy.get(verifyprogressbar.clickonwidget).eq(3).should('have.class','card-body').click()
+        cy.get(verifyprogressbar.navigatetoprogressbar).should('have.id','item-4').click()
+        cy.get(verifyprogressbar.clickonstartbtn).should('have.text','Start').click().should('have.text','Stop')
+    })
+    it('verify the tooltip',()=>{
+        cy.get(verifytooltip.clickonwidget).eq(3).should('have.class','card-body').click()
+        cy.get(verifytooltip.navigatetotooltip).click()
+        cy.get(verifytooltip.hoveronbtn).trigger('mouseover').should('have.text','Hover me to see')
+    })
+    it.only('verify user can drag and drop',()=>{
+        cy.get(verifydraganddrop.clickonwidget).eq(4).should('have.class','card-body').click()
+        cy.get(verifydraganddrop.navigatetodraganddrop).click()
+        cy.get(verifydraganddrop.clickondrag).drag(verifydraganddrop.clickondrop,{force:true}).should('have.id', 'droppable')
+        })
     })
