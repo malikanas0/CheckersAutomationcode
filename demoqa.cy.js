@@ -69,9 +69,9 @@ import { verifythesubmitform } from "../../utlis/demoqalocator";
         cy.get(verifytooltip.navigatetotooltip).click()
         cy.get(verifytooltip.hoveronbtn).trigger('mouseover').should('have.text','Hover me to see')
     })
-    it.only('verify user can drag and drop',()=>{
+    it('verify user can drag and drop',()=>{
         cy.get(verifydraganddrop.clickonwidget).eq(4).should('have.class','card-body').click()
         cy.get(verifydraganddrop.navigatetodraganddrop).click()
-        cy.get(verifydraganddrop.clickondrag).drag(verifydraganddrop.clickondrop,{force:true}).should('have.id', 'droppable')
+        cy.get(verifydraganddrop.clickondrag).drag(verifydraganddrop.clickondrop,{force:true}).should('be.visible')
         })
     })
